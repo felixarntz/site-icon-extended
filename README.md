@@ -1,3 +1,7 @@
+[![Code Climate](https://codeclimate.com/github/felixarntz/site-icon-extended/badges/gpa.svg)](https://codeclimate.com/github/felixarntz/site-icon-extended)
+[![Latest Stable Version](https://poser.pugx.org/felixarntz/site-icon-extended/version)](https://packagist.org/packages/felixarntz/site-icon-extended)
+[![License](https://poser.pugx.org/felixarntz/site-icon-extended/license)](https://packagist.org/packages/felixarntz/site-icon-extended)
+
 Site Icon Extended
 ==================
 
