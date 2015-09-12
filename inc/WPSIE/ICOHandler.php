@@ -71,9 +71,9 @@ if ( ! class_exists( 'WPSIE\ICOHandler' ) ) {
 		 */
 		public function add_hooks() {
 			add_action( 'delete_attachment', array( $this, 'maybe_delete_ico_file' ), 8, 1 );
-			add_action( 'admin_init', array( $this, 'maybe_generate_ico_file_check' ), 10 );
+			add_action( 'admin_init', array( $this, 'maybe_generate_ico_attachment_check' ), 10 );
 
-			add_filter( 'wp_generate_attachment_metadata', array( $this, 'maybe_generate_ico_file_filter' ), 10, 2 );
+			add_filter( 'wp_generate_attachment_metadata', array( $this, 'maybe_generate_ico_attachment_filter' ), 10, 2 );
 		}
 
 		/**
@@ -103,7 +103,7 @@ if ( ! class_exists( 'WPSIE\ICOHandler' ) ) {
 		 *
 		 * @since 0.1.0
 		 */
-		public function maybe_generate_ico_file_check() {
+		public function maybe_generate_ico_attachment_check() {
 			if ( ! current_user_can( 'upload_files' ) ) {
 				return;
 			}
@@ -123,7 +123,7 @@ if ( ! class_exists( 'WPSIE\ICOHandler' ) ) {
 				return;
 			}
 
-			$status = $this->maybe_generate_ico_file( $site_icon );
+			$status = $this->maybe_generate_ico_attachment( $site_icon );
 			if ( ! $status ) {
 				// if .ico file does not exist, try to generate it once a week
 				set_transient( 'wpsie_check_ico_file', '1', WEEK_IN_SECONDS );
@@ -138,92 +138,10 @@ if ( ! class_exists( 'WPSIE\ICOHandler' ) ) {
 		 * @param int $attachment_id the ID of the attachment that has just been generated
 		 * @return array the unmodified metadata
 		 */
-		public function maybe_generate_ico_file_filter( $metadata, $attachment_id ) {
-			$this->maybe_generate_ico_file( $attachment_id );
+		public function maybe_generate_ico_attachment_filter( $metadata, $attachment_id ) {
+			$this->maybe_generate_ico_attachment( $attachment_id );
 
 			return $metadata;
-		}
-
-		/**
-		 * Generates an .ico file from a site icon attachment.
-		 *
-		 * The PHP_ICO class is used to convert the PNG images into the .ico file.
-		 * The file is then stored as an additional attachment in WordPress.
-		 * This attachment's ID is stored in an option to be able to retrieve it anytime.
-		 *
-		 * @since 0.1.0
-		 * @param int $attachment_id the ID of the site icon attachment
-		 */
-		private function maybe_generate_ico_file( $attachment_id ) {
-			$attachment_context = get_post_meta( $attachment_id, '_wp_attachment_context', true );
-
-			if ( 'site-icon' !== $attachment_context ) {
-				return false;
-			}
-
-			$attachment = get_post( $attachment_id );
-			$src = get_attached_file( $attachment_id );
-
-			if ( ! $src ) {
-				return false;
-			}
-
-			$dst = explode( '.', $src );
-			$dst[ count( $dst ) - 1 ] = 'ico';
-			$dst = implode( '.', $dst );
-
-			$ico_creator = new PHP_ICO();
-			$has_image = false;
-
-			foreach ( $this->sizes as $size ) {
-				$intermediate = image_get_intermediate_size( $attachment_id, array( $size, $size ) );
-				if ( is_array( $intermediate ) ) {
-					$resized_file = str_replace( wp_basename( $src ), $intermediate['file'], $src );
-					if ( $ico_creator->add_image( $resized_file, array( array( $size, $size ) ) ) ) {
-						$has_image = true;
-					}
-				}
-			}
-
-			if ( ! $has_image ) {
-				return false;
-			}
-
-			$status = $ico_creator->save_ico( $dst );
-
-			if ( ! $status ) {
-				return false;
-			}
-
-			$parent_url = $attachment->guid;
-			$url = str_replace( basename( $parent_url ), basename( $dst ), $parent_url );
-
-			$size = @getimagesize( $dst );
-			$image_type = ( $size ) ? $size['mime'] : 'image/vnd.microsoft.icon';
-
-			$object = array(
-				'post_title'     => basename( $dst ),
-				'post_content'   => $url,
-				'post_mime_type' => $image_type,
-				'guid'           => $url,
-				'context'        => 'site-icon-ico-file',
-			);
-
-			$ico_id = wp_insert_attachment( $object, $dst );
-
-			if ( ! $ico_id ) {
-				return false;
-			}
-
-			$ico_metadata = wp_generate_attachment_metadata( $ico_id, $dst );
-
-			$ico_metadata = apply_filters( 'wpsie_ico_attachment_metadata', $ico_metadata );
-
-			wp_update_attachment_metadata( $ico_id, $ico_metadata );
-
-			update_post_meta( $attachment_id, 'wpsie_ico_id', $ico_id );
-
-			return true;
 		}
 
 		/**
@@ -242,6 +160,123 @@ if ( ! class_exists( 'WPSIE\ICOHandler' ) ) {
 					wp_delete_attachment( $ico_id, true );
 				}
 			}
+		}
+
+		/**
+		 * Generates an .ico attachment for another existing attachment if that attachment is a site icon.
+		 *
+		 * This attachment's ID is stored as a meta value in the original attachment to be able to retrieve it anytime.
+		 *
+		 * @since 0.1.0
+		 * @param int $attachment_id the ID of the site icon attachment
+		 * @return bool true if successful, false otherwise
+		 */
+		private function maybe_generate_ico_attachment( $attachment_id ) {
+			$attachment_context = get_post_meta( $attachment_id, '_wp_attachment_context', true );
+
+			if ( 'site-icon' !== $attachment_context ) {
+				return false;
+			}
+
+			$attachment = get_post( $attachment_id );
+			$src = get_attached_file( $attachment_id );
+
+			if ( ! $src ) {
+				return false;
+			}
+
+			$dst = $this->generate_ico_file( $attachment_id, $src );
+
+			if ( ! $dst ) {
+				return false;
+			}
+
+			$parent_url = $attachment->guid;
+			$url = str_replace( basename( $parent_url ), basename( $dst ), $parent_url );
+
+			$ico_id = $this->insert_ico_attachment( $dst, $url );
+
+			if ( ! $ico_id ) {
+				return false;
+			}
+
+			update_post_meta( $attachment_id, 'wpsie_ico_id', $ico_id );
+
+			return true;
+		}
+
+		/**
+		 * Generates an .ico file from an existing attachment.
+		 *
+		 * The PHP_ICO class is used to convert the different image sizes into the .ico file.
+		 *
+		 * @since 0.1.0
+		 * @param int $attachment_id the ID of the site icon attachment
+		 * @param string $source_file path to the site icon attachment file
+		 * @return string|false path to the new file or false if an error occurred
+		 */
+		private function generate_ico_file( $attachment_id, $source_file ) {
+			$destination_file = explode( '.', $source_file );
+			$destination_file[ count( $destination_file ) - 1 ] = 'ico';
+			$destination_file = implode( '.', $destination_file );
+
+			$ico_creator = new PHP_ICO();
+			$has_image = false;
+
+			foreach ( $this->sizes as $size ) {
+				$intermediate = image_get_intermediate_size( $attachment_id, array( $size, $size ) );
+				if ( is_array( $intermediate ) ) {
+					$resized_file = str_replace( wp_basename( $source_file ), $intermediate['file'], $source_file );
+					if ( $ico_creator->add_image( $resized_file, array( array( $size, $size ) ) ) ) {
+						$has_image = true;
+					}
+				}
+			}
+
+			if ( ! $has_image ) {
+				return false;
+			}
+
+			$status = $ico_creator->save_ico( $destination_file );
+			if ( ! $status ) {
+				return false;
+			}
+
+			return $destination_file;
+		}
+
+		/**
+		 * Inserts an attachment for an .ico file.
+		 *
+		 * @param string $file path to the .ico file
+		 * @param string $url URL to the .ico file
+		 * @return int|false the attachment ID or false if an error occurred
+		 */
+		private function insert_ico_attachment( $file, $url ) {
+			$size = @getimagesize( $file );
+			$image_type = ( $size ) ? $size['mime'] : 'image/vnd.microsoft.icon';
+
+			$object = array(
+				'post_title'     => basename( $file ),
+				'post_content'   => $url,
+				'post_mime_type' => $image_type,
+				'guid'           => $url,
+				'context'        => 'site-icon-ico-file',
+			);
+
+			$ico_id = wp_insert_attachment( $object, $file );
+
+			if ( ! $ico_id ) {
+				return false;
+			}
+
+			$ico_metadata = wp_generate_attachment_metadata( $ico_id, $file );
+
+			$ico_metadata = apply_filters( 'wpsie_ico_attachment_metadata', $ico_metadata );
+
+			wp_update_attachment_metadata( $ico_id, $ico_metadata );
+
+			return $ico_id;
 		}
 	}
 }

@@ -61,8 +61,21 @@ if ( ! class_exists( 'WPSIE\App' ) ) {
 			$ico_handler->set_sizes( $this->get_sizes( 'shortcut' ) );
 			$ico_handler->add_hooks();
 
-			add_filter( 'site_icon_meta_tags', array( $this, 'generate_meta_tags' ), 0, 1 );
 			add_filter( 'site_icon_image_sizes', array( $this, 'generate_image_sizes' ), 10, 1 );
+			add_filter( 'site_icon_meta_tags', array( $this, 'generate_meta_tags' ), 0, 1 );
+		}
+
+		/**
+		 * Extends the image sizes array that defines in which sizes the site icon is stored.
+		 *
+		 * @since 0.1.0
+		 * @param array $image_sizes the original image sizes
+		 * @return array the extended image sizes
+		 */
+		public function generate_image_sizes( $image_sizes = array() ) {
+			$extended_sizes = $this->get_sizes();
+
+			return array_unique( array_merge( $image_sizes, $extended_sizes ) );
 		}
 
 		/**
@@ -78,50 +91,13 @@ if ( ! class_exists( 'WPSIE\App' ) ) {
 		public function generate_meta_tags( $meta_tags = array() ) {
 			$meta_tags = array();
 
-			$default_sizes = $this->get_sizes( 'default' );
-			foreach ( $default_sizes as $size ) {
-				$meta_tags[] = sprintf( '<link rel="icon" type="image/png" sizes="%1$s" href="%2$s">', sprintf( '%1$dx%1$d', $size ), esc_url( get_site_icon_url( $size ) ) );
-			}
-
-			$apple_touch_sizes = $this->get_sizes( 'apple-touch' );
-			foreach ( $apple_touch_sizes as $size ) {
-				$meta_tags[] = sprintf( '<link rel="apple-touch-icon-precomposed" sizes="%1$s" href="%2$s">', sprintf( '%1$dx%1$d', $size ), esc_url( get_site_icon_url( $size ) ) );
-			}
-
-			$background_color = BackgroundHandler::instance()->get_background_color();
-			if ( $background_color ) {
-				$meta_tags[] = sprintf( '<meta name="msapplication-TileColor" content="%s">', esc_attr( '#' . ltrim( $background_color, '#' ) ) );
-			}
-
-			$ms_application_sizes = $this->get_sizes( 'ms-application' );
-			foreach ( $ms_application_sizes as $size ) {
-				$meta_tags[] = sprintf( '<meta name="msapplication-TileImage" content="%s">', esc_url( get_site_icon_url( $size ) ) );
-			}
-
-			$browserconfig_url = XMLHandler::instance()->get_browserconfig_url();
-			if ( $browserconfig_url ) {
-				$meta_tags[] = sprintf( '<meta name="msapplication-config" content="%s">', esc_url( $browserconfig_url ) );
-			}
-
-			$ico_url = ICOHandler::instance()->get_ico_url();
-			if ( $ico_url ) {
-				$meta_tags[] = sprintf( '<link rel="shortcut icon" href="%s">', esc_url( $ico_url ) );
-			}
+			$meta_tags = $this->generate_default_meta_tags( $meta_tags );
+			$meta_tags = $this->generate_apple_touch_meta_tags( $meta_tags );
+			$meta_tags = $this->generate_ms_application_meta_tags( $meta_tags );
+			$meta_tags = $this->generate_browserconfig_meta_tags( $meta_tags );
+			$meta_tags = $this->generate_shortcut_meta_tags( $meta_tags );
 
 			return $meta_tags;
-		}
-
-		/**
-		 * Extends the image sizes array that defines in which sizes the site icon is stored.
-		 *
-		 * @since 0.1.0
-		 * @param array $image_sizes the original image sizes
-		 * @return array the extended image sizes
-		 */
-		public function generate_image_sizes( $image_sizes = array() ) {
-			$extended_sizes = $this->get_sizes();
-
-			return array_unique( array_merge( $image_sizes, $extended_sizes ) );
 		}
 
 		/**
@@ -178,6 +154,91 @@ if ( ! class_exists( 'WPSIE\App' ) ) {
 			}
 
 			return array_merge( $sizes['default'], $sizes['shortcut'], $sizes['apple-touch'], $sizes['ms-application'], $sizes['browserconfig'] );
+		}
+
+		/**
+		 * Generates the default icon meta tags.
+		 *
+		 * @since 0.1.0
+		 * @param array $meta_tags the original meta tags
+		 * @return array the $meta_tags with the default icon meta tags added
+		 */
+		protected function generate_default_meta_tags( $meta_tags = array() ) {
+			$default_sizes = $this->get_sizes( 'default' );
+			foreach ( $default_sizes as $size ) {
+				$meta_tags[] = sprintf( '<link rel="icon" type="image/png" sizes="%1$s" href="%2$s">', sprintf( '%1$dx%1$d', $size ), esc_url( get_site_icon_url( $size ) ) );
+			}
+
+			return $meta_tags;
+		}
+
+		/**
+		 * Generates the Apple touch meta tags.
+		 *
+		 * @since 0.1.0
+		 * @param array $meta_tags the original meta tags
+		 * @return array the $meta_tags with the Apple touch meta tags added
+		 */
+		protected function generate_apple_touch_meta_tags( $meta_tags = array() ) {
+			$apple_touch_sizes = $this->get_sizes( 'apple-touch' );
+			foreach ( $apple_touch_sizes as $size ) {
+				$meta_tags[] = sprintf( '<link rel="apple-touch-icon-precomposed" sizes="%1$s" href="%2$s">', sprintf( '%1$dx%1$d', $size ), esc_url( get_site_icon_url( $size ) ) );
+			}
+
+			return $meta_tags;
+		}
+
+		/**
+		 * Generates the MS Application icon meta tags.
+		 *
+		 * @since 0.1.0
+		 * @param array $meta_tags the original meta tags
+		 * @return array the $meta_tags with the MS Application icon meta tags added
+		 */
+		protected function generate_ms_application_meta_tags( $meta_tags = array() ) {
+			$background_color = BackgroundHandler::instance()->get_background_color();
+			if ( $background_color ) {
+				$meta_tags[] = sprintf( '<meta name="msapplication-TileColor" content="%s">', esc_attr( '#' . ltrim( $background_color, '#' ) ) );
+			}
+
+			$ms_application_sizes = $this->get_sizes( 'ms-application' );
+			foreach ( $ms_application_sizes as $size ) {
+				$meta_tags[] = sprintf( '<meta name="msapplication-TileImage" content="%s">', esc_url( get_site_icon_url( $size ) ) );
+			}
+
+			return $meta_tags;
+		}
+
+		/**
+		 * Generates the browserconfig.xml meta tags.
+		 *
+		 * @since 0.1.0
+		 * @param array $meta_tags the original meta tags
+		 * @return array the $meta_tags with the browserconfig.xml meta tags added
+		 */
+		protected function generate_browserconfig_meta_tags( $meta_tags = array() ) {
+			$browserconfig_url = XMLHandler::instance()->get_browserconfig_url();
+			if ( $browserconfig_url ) {
+				$meta_tags[] = sprintf( '<meta name="msapplication-config" content="%s">', esc_url( $browserconfig_url ) );
+			}
+
+			return $meta_tags;
+		}
+
+		/**
+		 * Generates the shortcut icon meta tags.
+		 *
+		 * @since 0.1.0
+		 * @param array $meta_tags the original meta tags
+		 * @return array the $meta_tags with the shortcut icon meta tags added
+		 */
+		protected function generate_shortcut_meta_tags( $meta_tags = array() ) {
+			$ico_url = ICOHandler::instance()->get_ico_url();
+			if ( $ico_url ) {
+				$meta_tags[] = sprintf( '<link rel="shortcut icon" href="%s">', esc_url( $ico_url ) );
+			}
+
+			return $meta_tags;
 		}
 
 		/**
