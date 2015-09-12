@@ -57,7 +57,9 @@ If you're a developer and you have some ideas to improve the plugin or to solve 
 
 == Screenshots ==
 
-TODO
+1. The generated meta tags
+2. The browserconfig.xml file
+3. The new Site Icon background field in the Customizer
 
 == Changelog ==
 
