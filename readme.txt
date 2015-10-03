@@ -48,6 +48,10 @@ If you see that the `link` and `meta` tags in the head of your site do not outpu
 
 To access the generated XML (and to allow the browser to access it), some rewrite rules are necessary. If you are not able to access the file, it's probably because your rewrite rules have not been flushed correctly. Please navigate to the *Settings > Permalinks* page in the WordPress admin and just hit *Save* without changing anything to flush the rewrite rules.
 
+= The plugin allows users to upload SVG images. How can I disable that? =
+
+The ability to upload SVG images is required to use the Pinned Tab Icon for Safari. If you don't care about that feature or you simply want to disallow SVG uploads, you can define a constant with the name `WPSIE_PREVENT_SVG_UPLOAD` and set it to `true`.
+
 = Where should I submit my support request? =
 
 I preferably take support requests as [issues on Github](https://github.com/felixarntz/site-icon-extended/issues), so I would appreciate if you created an issue for your request there. However, if you don't have an account there and do not want to sign up, you can of course use the [wordpress.org support forums](https://wordpress.org/support/plugin/site-icon-extended) as well.

@@ -55,8 +55,10 @@ if ( ! class_exists( 'WPSIE\PinnedTabIconHandler' ) ) {
 		 * @since 0.2.0
 		 */
 		public function add_hooks() {
-			add_action( 'customize_register', array( $this, 'customize_register_pinned_tab_icon' ), 99, 1 );
-			add_filter( 'upload_mimes', array( $this, 'allow_svg_uploads' ) );
+			if ( ! defined( 'WPSIE_PREVENT_SVG_UPLOAD' ) || ! WPSIE_PREVENT_SVG_UPLOAD ) {
+				add_action( 'customize_register', array( $this, 'customize_register_pinned_tab_icon' ), 99, 1 );
+				add_filter( 'upload_mimes', array( $this, 'allow_svg_uploads' ) );
+			}
 		}
 
 		/**
@@ -66,7 +68,7 @@ if ( ! class_exists( 'WPSIE\PinnedTabIconHandler' ) ) {
 		 * @return string|false the URL to the icon or false if not set
 		 */
 		public function get_svg_url() {
-			return get_option( 'wpsie_pinned_tab_icon_url', '' );
+			return get_option( 'wpsie_pinned_tab_icon_url', false );
 		}
 
 		/**
