@@ -53,6 +53,9 @@ if ( ! class_exists( 'WPSIE\App' ) ) {
 			$background_handler = BackgroundHandler::instance();
 			$background_handler->add_hooks();
 
+			$pinned_tab_icon_handler = PinnedTabIconHandler::instance();
+			$pinned_tab_icon_handler->add_hooks();
+
 			$xml_handler = XMLHandler::instance();
 			$xml_handler->set_sizes( $this->get_sizes( 'browserconfig' ) );
 			$xml_handler->add_hooks();
@@ -95,6 +98,7 @@ if ( ! class_exists( 'WPSIE\App' ) ) {
 			$meta_tags = $this->generate_apple_touch_meta_tags( $meta_tags );
 			$meta_tags = $this->generate_ms_application_meta_tags( $meta_tags );
 			$meta_tags = $this->generate_browserconfig_meta_tags( $meta_tags );
+			$meta_tags = $this->generate_pinned_tab_meta_tags( $meta_tags );
 			$meta_tags = $this->generate_shortcut_meta_tags( $meta_tags );
 
 			return $meta_tags;
@@ -226,6 +230,23 @@ if ( ! class_exists( 'WPSIE\App' ) ) {
 		}
 
 		/**
+		 * Generates the Pinned Tab Icon meta tags.
+		 *
+		 * @since 0.2.0
+		 * @param array $meta_tags the original meta tags
+		 * @return array the $meta_tags with the Pinned Tab Icon meta tags added
+		 */
+		protected function generate_pinned_tab_meta_tags( $meta_tags = array() ) {
+			$pinned_tab_icon_url = PinnedTabIconHandler::instance()->get_svg_url();
+			if ( $pinned_tab_icon_url ) {
+				$pinned_tab_icon_color = PinnedTabIconHandler::instance()->get_color();
+				$meta_tags[] = sprintf( '<link rel="mask-icon" href="%1$s" color="%2$s">', esc_url( $pinned_tab_icon_url ), esc_attr( $pinned_tab_icon_color ) );
+			}
+
+			return $meta_tags;
+		}
+
+		/**
 		 * Generates the shortcut icon meta tags.
 		 *
 		 * @since 0.1.0
@@ -271,6 +292,8 @@ if ( ! class_exists( 'WPSIE\App' ) ) {
 		 */
 		public static function uninstall() {
 			delete_option( 'wpsie_background_color' );
+			delete_option( 'wpsie_pinned_tab_icon_url' );
+			delete_option( 'wpsie_pinned_tab_icon_color' );
 			delete_post_meta_by_key( 'wpsie_ico_id' );
 			delete_transient( 'wpsie_check_ico_file' );
 
