@@ -8,8 +8,8 @@ Donate link:       http://leaves-and-love.net/wordpress-plugins/
 Contributors:      flixos90
 Requires at least: 4.3 
 Tested up to:      4.3
-Stable tag:        0.1.0
-Version:           0.1.0
+Stable tag:        0.2.0
+Version:           0.2.0
 License:           GPL v2 
 License URI:       http://www.gnu.org/licenses/gpl-2.0.html
 Tags:              wordpress, plugin, site-icon, icon, favicon, browser, compatibility
@@ -27,6 +27,7 @@ Why this plugin then? -, you might ask. While WordPress does a pretty decent job
 * adds more icon sizes for the default icon and Apple Touch Icon to better support different resolutions
 * generates an `.ico` file to use for the general shortcut icon
 * generates a `browserconfig.xml` file to support Windows 8.1
+* allows upload and color specification of an SVG image to use as Pinned Tab Icon for Safari
 * adds a Customizer field to specify an icon background color used by some Windows devices
 
 **Note:** This plugin requires PHP 5.3.0 at least.
@@ -62,6 +63,10 @@ If you're a developer and you have some ideas to improve the plugin or to solve 
 3. The new Site Icon background field in the Customizer
 
 == Changelog ==
+
+= 0.2.0 =
+* Added: a Pinned Tab Icon (also called mask icon) for Safari can now be uploaded
+* Tweaked: changed textdomain to `site-icon-extended` for translate.wordpress.org
 
 = 0.1.0 =
 * Initial release

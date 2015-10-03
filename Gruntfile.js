@@ -2,7 +2,7 @@
 module.exports = function(grunt) {
 	grunt.initConfig({
 		pkg: grunt.file.readJSON('package.json'),
-		pluginheader: 	'/*\n' +
+		pluginheader:	'/*\n' +
 						'Plugin Name: Site Icon Extended\n' +
 						'Plugin URI: <%= pkg.homepage %>\n' +
 						'Description: <%= pkg.description %>\n' +
@@ -11,19 +11,19 @@ module.exports = function(grunt) {
 						'Author URI: <%= pkg.author.url %>\n' +
 						'License: <%= pkg.license.name %>\n' +
 						'License URI: <%= pkg.license.url %>\n' +
-						'Text Domain: wpsie\n' +
+						'Text Domain: site-icon-extended\n' +
 						'Domain Path: /languages/\n' +
-						'Tags: wordpress, plugin, site-icon, icon, favicon, browser, compatibility\n' +
+						'Tags: wordpress, plugin, site-icon, icon, favicon, browser, compatibility, browserconfig, ico, apple-touch-icon, pinned-tab-icon\n' +
 						'*/',
-		fileheader: '/**\n' +
-					' * @package WPSIE\n' +
-					' * @version <%= pkg.version %>\n' +
-					' * @author <%= pkg.author.name %> <<%= pkg.author.email %>>\n' +
-					' */',
+		fileheader:		'/**\n' +
+						' * @package WPSIE\n' +
+						' * @version <%= pkg.version %>\n' +
+						' * @author <%= pkg.author.name %> <<%= pkg.author.email %>>\n' +
+						' */',
 
 		clean: {
 			translation: [
-				'languages/wpsie.pot'
+				'languages/site-icon-extended.pot'
 			]
 		},
 
@@ -58,7 +58,7 @@ module.exports = function(grunt) {
 					domainPath: '/languages',
 					exclude: [ 'vendor/.*' ],
 					potComments: 'Copyright (c) 2015-<%= grunt.template.today("yyyy") %> <%= pkg.author.name %>',
-					potFilename: 'wpsie.pot',
+					potFilename: 'site-icon-extended.pot',
 					potHeaders: {
 						'language-team': '<%= pkg.author.name %> <<%= pkg.author.email %>>',
 						'last-translator': '<%= pkg.author.name %> <<%= pkg.author.email %>>',

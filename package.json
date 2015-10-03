@@ -1,6 +1,6 @@
 {
   "name": "site-icon-extended",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "This plugin enhances the WordPress Site Icon feature by adding more icon formats for improved cross-browser compatibility.",
   "keywords": [
     "wordpress",
@@ -9,7 +9,11 @@
     "icon",
     "favicon",
     "browser",
-    "compatibility"
+    "compatibility",
+    "browserconfig",
+    "ico",
+    "apple-touch-icon",
+    "pinned-tab-icon"
   ],
   "author": {
     "name": "Felix Arntz",

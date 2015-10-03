@@ -1,7 +1,7 @@
 <?php
 /**
  * @package WPSIE
- * @version 0.1.0
+ * @version 0.2.0
  * @author Felix Arntz <felix-arntz@leaves-and-love.net>
  */
 
@@ -86,8 +86,8 @@ if ( ! class_exists( 'WPSIE\BackgroundHandler' ) ) {
 			) );
 
 			$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'wpsie_background_color', array(
-				'label'			=> __( 'Site Icon Background Color', 'wpsie' ),
-				'description'	=> __( 'The background color for the site icon is used across several Microsoft devices.', 'wpsie' ),
+				'label'			=> __( 'Site Icon Background Color', 'site-icon-extended' ),
+				'description'	=> __( 'The background color for the site icon is used across several Microsoft devices.', 'site-icon-extended' ),
 				'section'		=> $site_icon_control->section,
 				'priority'		=> $site_icon_control->priority + 1,
 			) ) );

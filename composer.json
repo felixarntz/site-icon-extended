@@ -1,7 +1,7 @@
 {
   "name": "felixarntz/site-icon-extended",
   "description": "This plugin enhances the WordPress Site Icon feature by adding more icon formats for improved cross-browser compatibility.",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "license": "GPL-2.0",
   "type": "wordpress-plugin",
   "keywords": [
@@ -11,7 +11,11 @@
     "icon",
     "favicon",
     "browser",
-    "compatibility"
+    "compatibility",
+    "browserconfig",
+    "ico",
+    "apple-touch-icon",
+    "pinned-tab-icon"
   ],
   "homepage": "http://wordpress.org/plugins/site-icon-extended/",
   "authors": [

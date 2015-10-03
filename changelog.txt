@@ -1,4 +1,8 @@
 == Changelog ==
 
+= 0.2.0 =
+* Added: a Pinned Tab Icon (also called mask icon) for Safari can now be uploaded
+* Tweaked: changed textdomain to `site-icon-extended` for translate.wordpress.org
+
 = 0.1.0 =
 * Initial release

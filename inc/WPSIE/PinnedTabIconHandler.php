@@ -1,7 +1,7 @@
 <?php
 /**
  * @package WPSIE
- * @version 0.1.0
+ * @version 0.2.0
  * @author Felix Arntz <felix-arntz@leaves-and-love.net>
  */
 
@@ -104,15 +104,15 @@ if ( ! class_exists( 'WPSIE\PinnedTabIconHandler' ) ) {
 			) );
 
 			$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'wpsie_pinned_tab_icon_url', array(
-				'label'			=> __( 'Pinned Tab Icon', 'wpsie' ),
-				'description'	=> __( 'Upload a square SVG image with all vectors 100% black to use as Pinned Tab Icon for Safari.', 'wpsie' ),
+				'label'			=> __( 'Pinned Tab Icon', 'site-icon-extended' ),
+				'description'	=> __( 'Upload a square SVG image with all vectors 100% black to use as Pinned Tab Icon for Safari.', 'site-icon-extended' ),
 				'section'		=> $site_icon_control->section,
 				'priority'		=> $site_icon_control->priority + 2,
 			) ) );
 
 			$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'wpsie_pinned_tab_icon_color', array(
-				'label'			=> __( 'Pinned Tab Icon Color', 'wpsie' ),
-				'description'	=> __( 'Set the color to be applied to the Pinned Tab Icon.', 'wpsie' ),
+				'label'			=> __( 'Pinned Tab Icon Color', 'site-icon-extended' ),
+				'description'	=> __( 'Set the color to be applied to the Pinned Tab Icon.', 'site-icon-extended' ),
 				'section'		=> $site_icon_control->section,
 				'priority'		=> $site_icon_control->priority + 3,
 			) ) );
