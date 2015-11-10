@@ -1,10 +1,10 @@
 # Copyright (c) 2015-2015 Felix Arntz
 msgid ""
 msgstr ""
-"Project-Id-Version: site-icon-extended 0.1.0\n"
+"Project-Id-Version: site-icon-extended 0.2.1\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/plugins/site-icon-extended/\n"
-"POT-Creation-Date: 2015-11-10 00:14:04+00:00\n"
-"PO-Revision-Date: 2015-11-10 01:14+0100\n"
+"POT-Creation-Date: 2015-11-10 17:20:21+00:00\n"
+"PO-Revision-Date: 2015-11-10 18:22+0100\n"
 "Last-Translator: Felix Arntz <felix-arntz@leaves-and-love.net>\n"
 "Language-Team: Felix Arntz <felix-arntz@leaves-and-love.net>\n"
 "Language: de_DE\n"
