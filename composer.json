@@ -2,7 +2,7 @@
   "name": "felixarntz/site-icon-extended",
   "description": "This plugin enhances the WordPress Site Icon feature by adding more icon formats for improved cross-browser compatibility.",
   "version": "0.2.0",
-  "license": "GPL-2.0",
+  "license": "GPL-3.0",
   "type": "wordpress-plugin",
   "keywords": [
     "wordpress",

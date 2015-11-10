@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: site-icon-extended 0.1.0\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/plugins/site-icon-extended/\n"
-"POT-Creation-Date: 2015-10-03 15:33:10+00:00\n"
-"PO-Revision-Date: 2015-10-03 17:37+0100\n"
+"POT-Creation-Date: 2015-11-10 00:14:04+00:00\n"
+"PO-Revision-Date: 2015-11-10 01:14+0100\n"
 "Last-Translator: Felix Arntz <felix-arntz@leaves-and-love.net>\n"
 "Language-Team: Felix Arntz <felix-arntz@leaves-and-love.net>\n"
 "Language: de_DE\n"
@@ -34,11 +34,11 @@ msgstr ""
 "Die Hintergrundfarbe für das Website-Icon wird von verschiedenen Microsoft-"
 "Geräten verwendet."
 
-#: inc/WPSIE/PinnedTabIconHandler.php:107
+#: inc/WPSIE/PinnedTabIconHandler.php:109
 msgid "Pinned Tab Icon"
 msgstr "Pinned Tab-Icon"
 
-#: inc/WPSIE/PinnedTabIconHandler.php:108
+#: inc/WPSIE/PinnedTabIconHandler.php:110
 msgid ""
 "Upload a square SVG image with all vectors 100% black to use as Pinned Tab "
 "Icon for Safari."
@@ -46,11 +46,11 @@ msgstr ""
 "Laden Sie ein quadratisches SVG-Bild hoch, dessen Vektoren ausschließlich "
 "100% schwarz sind, um dieses als Pinned Tab Icon für Safari zu verwenden."
 
-#: inc/WPSIE/PinnedTabIconHandler.php:114
+#: inc/WPSIE/PinnedTabIconHandler.php:116
 msgid "Pinned Tab Icon Color"
 msgstr "Pinned Tab-Iconfarbe"
 
-#: inc/WPSIE/PinnedTabIconHandler.php:115
+#: inc/WPSIE/PinnedTabIconHandler.php:117
 msgid "Set the color to be applied to the Pinned Tab Icon."
 msgstr "Legen Sie die Farbe des Pinned Tab-Icons fest."
 
