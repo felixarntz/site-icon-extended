@@ -68,6 +68,9 @@ If you're a developer and you have some ideas to improve the plugin or to solve 
 
 == Changelog ==
 
+= 0.2.2 =
+* Fixed: on PHP 5.2 the plugin now terminates appropriately
+
 = 0.2.1 =
 * Fixed: critical error that could happen when using a composer-managed WordPress setup
 
