@@ -8,8 +8,8 @@ Donate link:       http://leaves-and-love.net/wordpress-plugins/
 Contributors:      flixos90
 Requires at least: 4.3 
 Tested up to:      4.3
-Stable tag:        0.2.1
-Version:           0.2.1
+Stable tag:        0.2.2
+Version:           0.2.2
 License:           GPL v2 
 License URI:       http://www.gnu.org/licenses/gpl-2.0.html
 Tags:              wordpress, plugin, site-icon, icon, favicon, browser, compatibility
