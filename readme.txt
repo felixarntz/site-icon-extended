@@ -10,8 +10,8 @@ Requires at least: 4.3
 Tested up to:      4.3
 Stable tag:        0.2.2
 Version:           0.2.2
-License:           GPL v2 
-License URI:       http://www.gnu.org/licenses/gpl-2.0.html
+License:           GPL v3
+License URI:       http://www.gnu.org/licenses/gpl-3.0.html
 Tags:              wordpress, plugin, site-icon, icon, favicon, browser, compatibility
 
 This plugin enhances the WordPress Site Icon feature by adding more icon formats for improved cross-browser compatibility.
