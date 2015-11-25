@@ -1,5 +1,8 @@
 == Changelog ==
 
+= 0.2.3 =
+* Fixed: removed .gitignore from svn repo
+
 = 0.2.2 =
 * Fixed: on PHP 5.2 the plugin now terminates appropriately
 

@@ -8,8 +8,8 @@ Donate link:       http://leaves-and-love.net/wordpress-plugins/
 Contributors:      flixos90
 Requires at least: 4.3 
 Tested up to:      4.3
-Stable tag:        0.2.2
-Version:           0.2.2
+Stable tag:        0.2.3
+Version:           0.2.3
 License:           GPL v3
 License URI:       http://www.gnu.org/licenses/gpl-3.0.html
 Tags:              wordpress, plugin, site-icon, icon, favicon, browser, compatibility
@@ -67,6 +67,9 @@ If you're a developer and you have some ideas to improve the plugin or to solve 
 3. The new Site Icon background field in the Customizer
 
 == Changelog ==
+
+= 0.2.3 =
+* Fixed: removed .gitignore from svn repo
 
 = 0.2.2 =
 * Fixed: on PHP 5.2 the plugin now terminates appropriately
