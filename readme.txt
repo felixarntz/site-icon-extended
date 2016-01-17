@@ -6,10 +6,10 @@ Author URI:        http://leaves-and-love.net
 Author:            Felix Arntz
 Donate link:       http://leaves-and-love.net/wordpress-plugins/
 Contributors:      flixos90
-Requires at least: 4.3 
-Tested up to:      4.3
-Stable tag:        0.2.3
-Version:           0.2.3
+Requires at least: 4.4.1
+Tested up to:      4.4.1
+Stable tag:        0.2.4
+Version:           0.2.4
 License:           GPL v3
 License URI:       http://www.gnu.org/licenses/gpl-3.0.html
 Tags:              wordpress, plugin, site-icon, icon, favicon, browser, compatibility
@@ -67,6 +67,9 @@ If you're a developer and you have some ideas to improve the plugin or to solve 
 3. The new Site Icon background field in the Customizer
 
 == Changelog ==
+
+= 0.2.4 =
+* Enhanced: plugin can now easily be used as a must-use plugin or as a library inside any plugin or theme
 
 = 0.2.3 =
 * Fixed: removed .gitignore from svn repo

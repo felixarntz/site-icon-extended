@@ -1,5 +1,8 @@
 == Changelog ==
 
+= 0.2.4 =
+* Enhanced: plugin can now easily be used as a must-use plugin or as a library inside any plugin or theme
+
 = 0.2.3 =
 * Fixed: removed .gitignore from svn repo
 

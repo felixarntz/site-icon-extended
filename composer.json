@@ -1,7 +1,7 @@
 {
   "name": "felixarntz/site-icon-extended",
   "description": "This plugin enhances the WordPress Site Icon feature by adding more icon formats for improved cross-browser compatibility.",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "license": "GPL-3.0",
   "type": "wordpress-plugin",
   "keywords": [
@@ -64,6 +64,6 @@
   "require": {
     "composer/installers": "~1.0",
     "chrisbliss18/php-ico": "dev-master",
-    "felixarntz/leavesandlove-wp-plugin-util": "1.6.4"
+    "felixarntz/leavesandlove-wp-plugin-util": "1.7.0"
   }
 }
