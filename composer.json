@@ -64,6 +64,6 @@
   "require": {
     "composer/installers": "~1.0",
     "chrisbliss18/php-ico": "dev-master",
-    "felixarntz/leavesandlove-wp-plugin-util": "1.7.0"
+    "felixarntz/leavesandlove-wp-plugin-util": "2.0.0"
   }
 }
