@@ -1,7 +1,11 @@
 == Changelog ==
 
+= 0.2.5 =
+* Tweaked: plugin now uses wordpress.org language packs
+* Tweaked: updated plugin initialization library
+
 = 0.2.4 =
-* Enhanced: plugin can now easily be used as a must-use plugin or as a library inside any plugin or theme
+* Enhanced: plugin can now easily be used as a must-use plugin
 
 = 0.2.3 =
 * Fixed: removed .gitignore from svn repo

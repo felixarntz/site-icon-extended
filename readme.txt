@@ -8,8 +8,8 @@ Donate link:       http://leaves-and-love.net/wordpress-plugins/
 Contributors:      flixos90
 Requires at least: 4.4.2
 Tested up to:      4.4.2
-Stable tag:        0.2.4
-Version:           0.2.4
+Stable tag:        0.2.5
+Version:           0.2.5
 License:           GPL v3
 License URI:       http://www.gnu.org/licenses/gpl-3.0.html
 Tags:              wordpress, plugin, site-icon, icon, favicon, browser, compatibility
@@ -60,6 +60,8 @@ I preferably take support requests as [issues on Github](https://github.com/feli
 
 If you're a developer and you have some ideas to improve the plugin or to solve a bug, feel free to raise an issue or submit a pull request in the [Github repository for the plugin](https://github.com/felixarntz/site-icon-extended).
 
+You can also contribute to the plugin by translating it. Simply visit [translate.wordpress.org](https://translate.wordpress.org/projects/wp-plugins/site-icon-extended) to get started.
+
 == Screenshots ==
 
 1. The generated meta tags
@@ -68,8 +70,12 @@ If you're a developer and you have some ideas to improve the plugin or to solve 
 
 == Changelog ==
 
+= 0.2.5 =
+* Tweaked: plugin now uses wordpress.org language packs
+* Tweaked: updated plugin initialization library
+
 = 0.2.4 =
-* Enhanced: plugin can now easily be used as a must-use plugin or as a library inside any plugin or theme
+* Enhanced: plugin can now easily be used as a must-use plugin
 
 = 0.2.3 =
 * Fixed: removed .gitignore from svn repo

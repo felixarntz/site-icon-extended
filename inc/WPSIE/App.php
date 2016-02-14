@@ -1,7 +1,7 @@
 <?php
 /**
  * @package WPSIE
- * @version 0.2.4
+ * @version 0.2.5
  * @author Felix Arntz <felix-arntz@leaves-and-love.net>
  */
 

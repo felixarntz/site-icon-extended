@@ -21,3 +21,5 @@ Contributions and Bugs
 ----------------------
 
 If you have ideas on how to improve the plugin or if you discover a bug, I would appreciate if you shared them with me, right here on Github. In either case, please open a new issue [here](https://github.com/felixarntz/site-icon-extended/issues/new)!
+
+You can also contribute to the plugin by translating it. Simply visit [translate.wordpress.org](https://translate.wordpress.org/projects/wp-plugins/site-icon-extended) to get started.
