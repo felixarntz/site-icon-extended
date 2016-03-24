@@ -153,7 +153,7 @@ if ( ! class_exists( 'WPSIE\ICOHandler' ) ) {
 		 */
 		public function maybe_delete_ico_file( $attachment_id ) {
 			$site_icon_id = get_option( 'site_icon' );
-			$ico_id = get_post_meta( $site_icon, 'wpsie_ico_id', true );
+			$ico_id = get_post_meta( $site_icon_id, 'wpsie_ico_id', true );
 
 			if ( $site_icon_id && $attachment_id == $site_icon_id ) {
 				if ( $ico_id ) {
