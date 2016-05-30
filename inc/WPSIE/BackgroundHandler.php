@@ -1,8 +1,10 @@
 <?php
 /**
+ * WPSIE\BackgroundHandler class
+ *
  * @package WPSIE
- * @version 0.2.5
  * @author Felix Arntz <felix-arntz@leaves-and-love.net>
+ * @since 0.1.0
  */
 
 namespace WPSIE;

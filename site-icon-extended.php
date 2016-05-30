@@ -1,20 +1,22 @@
 <?php
 /*
 Plugin Name: Site Icon Extended
-Plugin URI: http://wordpress.org/plugins/site-icon-extended/
+Plugin URI:  http://wordpress.org/plugins/site-icon-extended/
 Description: This plugin enhances the WordPress Site Icon feature by adding more icon formats for improved cross-browser compatibility.
-Version: 0.2.5
-Author: Felix Arntz
-Author URI: http://leaves-and-love.net
-License: GNU General Public License v3
+Version:     0.2.5
+Author:      Felix Arntz
+Author URI:  https://leaves-and-love.net
+License:     GNU General Public License v3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Text Domain: site-icon-extended
-Tags: wordpress, plugin, site-icon, icon, favicon, browser, compatibility, browserconfig, ico, apple-touch-icon, pinned-tab-icon
+Tags:        site-icon, icon, favicon, browser, compatibility, browserconfig, ico, apple-touch-icon, pinned-tab-icon
 */
 /**
+ * Plugin initialization file
+ *
  * @package WPSIE
- * @version 0.2.5
  * @author Felix Arntz <felix-arntz@leaves-and-love.net>
+ * @since 0.1.0
  */
 
 if ( ! defined( 'ABSPATH' ) ) {

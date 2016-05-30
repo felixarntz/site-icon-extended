@@ -2,17 +2,16 @@
 
 Plugin Name:       Site Icon Extended
 Plugin URI:        http://wordpress.org/plugins/site-icon-extended/
-Author URI:        http://leaves-and-love.net
 Author:            Felix Arntz
-Donate link:       http://leaves-and-love.net/wordpress-plugins/
+Author URI:        https://leaves-and-love.net
 Contributors:      flixos90
-Requires at least: 4.4.2
-Tested up to:      4.4.2
+Requires at least: 4.3
+Tested up to:      4.5.2
 Stable tag:        0.2.5
 Version:           0.2.5
-License:           GPL v3
+License:           GNU General Public License v3
 License URI:       http://www.gnu.org/licenses/gpl-3.0.html
-Tags:              wordpress, plugin, site-icon, icon, favicon, browser, compatibility
+Tags:              site-icon, icon, favicon, browser, compatibility, browserconfig, ico, apple-touch-icon, pinned-tab-icon
 
 This plugin enhances the WordPress Site Icon feature by adding more icon formats for improved cross-browser compatibility.
 
