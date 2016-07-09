@@ -1,7 +1,7 @@
 {
   "name": "felixarntz/site-icon-extended",
   "description": "This plugin enhances the WordPress Site Icon feature by adding more icon formats for improved cross-browser compatibility.",
-  "version": "0.2.5",
+  "version": "0.2.6",
   "license": "GPL-3.0",
   "type": "wordpress-plugin",
   "keywords": [
@@ -17,7 +17,7 @@
     "apple-touch-icon",
     "pinned-tab-icon"
   ],
-  "homepage": "http://wordpress.org/plugins/site-icon-extended/",
+  "homepage": "https://wordpress.org/plugins/site-icon-extended/",
   "authors": [
     {
       "name": "Felix Arntz",

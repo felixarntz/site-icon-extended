@@ -1,15 +1,15 @@
 === Site Icon Extended ===
 
 Plugin Name:       Site Icon Extended
-Plugin URI:        http://wordpress.org/plugins/site-icon-extended/
+Plugin URI:        https://wordpress.org/plugins/site-icon-extended/
 Author:            Felix Arntz
 Author URI:        https://leaves-and-love.net
 Contributors:      flixos90
 Donate link:       https://leaves-and-love.net/wordpress-plugins/
 Requires at least: 4.3
 Tested up to:      4.5.3
-Stable tag:        0.2.5
-Version:           0.2.5
+Stable tag:        0.2.6
+Version:           0.2.6
 License:           GNU General Public License v3
 License URI:       http://www.gnu.org/licenses/gpl-3.0.html
 Tags:              site-icon, icon, favicon, browser, compatibility, browserconfig, ico, apple-touch-icon, pinned-tab-icon
@@ -69,6 +69,9 @@ You can also contribute to the plugin by translating it. Simply visit [translate
 3. The new Site Icon background field in the Customizer
 
 == Changelog ==
+
+= 0.2.6 =
+* Tweaked: updated plugin initialization library
 
 = 0.2.5 =
 * Tweaked: plugin now uses wordpress.org language packs

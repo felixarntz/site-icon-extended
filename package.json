@@ -1,6 +1,6 @@
 {
   "name": "site-icon-extended",
-  "version": "0.2.5",
+  "version": "0.2.6",
   "description": "This plugin enhances the WordPress Site Icon feature by adding more icon formats for improved cross-browser compatibility.",
   "keywords": [
     "wordpress",
@@ -20,7 +20,7 @@
     "email": "felix-arntz@leaves-and-love.net",
     "url": "https://leaves-and-love.net"
   },
-  "homepage": "http://wordpress.org/plugins/site-icon-extended/",
+  "homepage": "https://wordpress.org/plugins/site-icon-extended/",
   "repository": {
     "type": "git",
     "url": "git://github.com/felixarntz/site-icon-extended.git"

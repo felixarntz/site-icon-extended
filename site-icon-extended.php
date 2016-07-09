@@ -1,9 +1,9 @@
 <?php
 /*
 Plugin Name: Site Icon Extended
-Plugin URI:  http://wordpress.org/plugins/site-icon-extended/
+Plugin URI:  https://wordpress.org/plugins/site-icon-extended/
 Description: This plugin enhances the WordPress Site Icon feature by adding more icon formats for improved cross-browser compatibility.
-Version:     0.2.5
+Version:     0.2.6
 Author:      Felix Arntz
 Author URI:  https://leaves-and-love.net
 License:     GNU General Public License v3
@@ -40,7 +40,7 @@ if ( version_compare( phpversion(), '5.3.0' ) >= 0 && ! class_exists( 'WPSIE\App
 LaL_WP_Plugin_Loader::load_plugin( array(
 	'slug'					=> 'site-icon-extended',
 	'name'					=> 'Site Icon Extended',
-	'version'				=> '0.2.5',
+	'version'				=> '0.2.6',
 	'main_file'				=> __FILE__,
 	'namespace'				=> 'WPSIE',
 	'textdomain'			=> 'site-icon-extended',

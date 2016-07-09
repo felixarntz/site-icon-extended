@@ -1,5 +1,8 @@
 == Changelog ==
 
+= 0.2.6 =
+* Tweaked: updated plugin initialization library
+
 = 0.2.5 =
 * Tweaked: plugin now uses wordpress.org language packs
 * Tweaked: updated plugin initialization library
